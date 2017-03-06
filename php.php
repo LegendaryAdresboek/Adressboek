@@ -25,7 +25,7 @@
         if($row){
             echo "Hallo het is gelukt.";
 			}else {
-				echo "het is mislukt.lolxd";
+				echo "het is mislukt";
 			}
 			}
 
