@@ -10,6 +10,7 @@
 
 <body>
 	<?php
+		session_start();
 		$conn = mysqli_connect("localhost", "id824985_admin", "HQo5PrygJ+Yy", "id824985_inlog");
 		if (!$conn) {
 	    die("Connection failed: " . mysqli_connect_errno());
@@ -39,10 +40,11 @@
 
 	<?php
 	if ($login == true) {
-		header("http://adressboek.000webhostapp.com/Homepage.html");
+		$_SESSION["loggedin"] = true;
+		header("Location:http://adressboek.000webhostapp.com/Homepage.php");
 		exit;
 	}
-	}else {
+	else {
 		echo "u stoopid";
 	}
 
