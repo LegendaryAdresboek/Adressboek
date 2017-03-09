@@ -1,0 +1,140 @@
+body
+{
+    /*background-image: url("achtergrond2.png");*/
+    /*background-color: cornflowerblue;*/
+    background-image: url("City.jpg");
+}
+
+h1
+{
+    font-family: Walkway Expand;
+    color: white;
+    padding-left: 55px;
+}
+
+#container
+{
+    width: auto;
+    height: 500px;
+}
+
+
+#loginvak
+{
+    width: 340px;
+    height: auto;
+    /*background-color: royalblue;*/
+    background-color: rgb(88, 83, 107, 1);
+    margin: 20px 0px 0px 20px;
+    float: left;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    /*color: #333333;*/
+    color: white;
+}
+
+p
+{
+    margin: 0px;
+}
+
+input
+{
+    margin-bottom: 10px;
+    height: 20px;
+    width: 300px;
+    border-radius: 20px;
+}
+
+input.button
+{
+    width: 150px;
+    /*margin-left: 50px;*/
+    margin-top: 10px;
+    border: none;
+}
+
+#tabel
+{
+    width: auto;
+    height: auto;
+    float: left;
+    margin-top: 20px;
+
+}
+
+
+table
+{
+    border: 1px solid white;
+    margin-left: 100px;
+    color: gray;
+    -webkit-font-smoothing: antialiased;
+    color: white;
+    margin-top: 35px;
+}
+
+th
+{
+    border: 1px solid white;
+    -webkit-font-smoothing: antialiased;
+    width: 150px;
+}
+th.klein
+{
+    border: 1px solid white;
+    -webkit-font-smoothing: antialiased;
+    width: 150px;
+    text-align: center;
+
+}
+
+td.klein
+{
+    text-align: center;
+}
+
+td
+{
+    border-bottom: 1px solid white;
+}
+
+td.checkbox
+{
+   width: 10px;
+   border-right: 1px solid white;
+}
+
+th.checkbox{
+  width: 10px;
+}
+
+input.checkbox
+{
+  width: 10px;
+}
+
+img
+{
+  height: 20px;
+  width: 20px;
+
+}
+
+td.icon
+{
+  width: 20px;
+
+}
+th.icon
+{
+  width: 20px;
+}
+
+button.weizigbutton
+{
+  /*opacity: 0;*/
+
+}
