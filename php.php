@@ -41,6 +41,7 @@
 	<?php
 	if ($login == true) {
 		$_SESSION["loggedin"] = true;
+		// stuur door naar Homepage
 		header("Location:http://adressboek.000webhostapp.com/Homepage.php");
 		exit;
 	}
