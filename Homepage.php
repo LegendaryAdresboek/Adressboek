@@ -30,6 +30,12 @@
             <p>Adress:</p> <input class="textvak" type="text" name="gebruikersnaam">
             <input class="button" type="submit" value="Zoeken" style="height: 40px">
 		</form>
+		<button id="loguit">uitloggen</button>
+		<script type="text/javascript">
+    document.getElementById("loguit").onclick = function() {
+        location.href = "http://adressboek.000webhostapp.com/uitlog.php/";
+    };
+</script>
 
 
 

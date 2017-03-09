@@ -5,6 +5,12 @@
 		<meta charset="utf-8">
 		<title>Homepage</title>
 		<link rel="stylesheet" type="text/css" href="Homepage.css">
+		<script>
+			function errorHandler() {
+				alert("Wachtwoord en/of gebruikernaam incorrect, probeer het opnieuw.");
+				window.location.href="/"
+			}
+		</script>
 	</head>
 
 
@@ -46,7 +52,7 @@
 		exit;
 	}
 	else {
-		echo "u stoopid";
+		echo "<script> errorHandler(); </script>";
 	}
 
 
