@@ -1,5 +1,6 @@
 <?php
 //eerst connectie
+//now grabs passwords from external file so no one can see.
 $lines = file('configgebruikers.txt', FILE_IGNORE_NEW_LINES);
 $connection = mysqli_connect("localhost", $lines[0], $lines[1], $lines[2]);
 
