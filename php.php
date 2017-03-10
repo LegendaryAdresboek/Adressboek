@@ -16,8 +16,10 @@
 
 <body>
 	<?php
+	//need to change this
+		$lines = file('configinlog.txt', FILE_IGNORE_NEW_LINES);
 		session_start();
-		$conn = mysqli_connect("localhost", "id824985_admin", "HQo5PrygJ+Yy", "id824985_inlog");
+		$conn = mysqli_connect("localhost", $lines[0], $lines[1], $lines[2]);
 		if (!$conn) {
 	    die("Connection failed: " . mysqli_connect_errno());
 		}

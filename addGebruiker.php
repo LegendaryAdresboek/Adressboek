@@ -1,6 +1,7 @@
 <?php
 //eerst connectie
-$connection = mysqli_connect("localhost", "id824985_gegevens", "adresboek", "id824985_contacten");
+$lines = file('configgebruikers.txt', FILE_IGNORE_NEW_LINES);
+$connection = mysqli_connect("localhost", $lines[0], $lines[1], $lines[2]);
 
 //doet ie het
 if (!$connection) {
@@ -8,13 +9,13 @@ if (!$connection) {
 }
 //gebruikers invoeren
 	if (!empty($_POST)) {
-		
+
 	$query = "INSERT INTO gebruikers (Voornaam, Tussenvoegsel, Achternaam, Adres, Postcode, Plaats, Telefoonnummer)
     VALUES ('{$_POST['Voornaam']}', '{$_POST['Tussenvoegsel']}', '{$_POST['Achternaam']}', '{$_POST['Adres']}', '{$_POST['Postcode']}', '{$_POST['Plaats']}', '{$_POST['Telefoonnummer']}')";
-	
+
 
 	$resultaat = mysqli_query($connection, $query);
-	
+
 	if (!$resultaat) {
 	die ("Het is niet gelukt: ".mysqli_error($resultaat));
 	} else {
@@ -23,9 +24,9 @@ if (!$connection) {
 	mysqli_close($connection);
 	}
 
-	
 
-	
+
+
 ?>
 
 <!doctype html>
