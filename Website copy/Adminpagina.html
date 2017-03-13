@@ -21,7 +21,7 @@
             <input class="button" type="submit" value="Zoeken" style="height: 40px">
 						<input class="button" type="submit" value="Toevoegen" style="height: 40px">
 						<input class="button" type="submit" value="Wijzigen" style="height: 40px">
-						<input class="button" type="submit" value="Verwijderen" style="height: 40px">
+						<input onclick="verwijder()"  class="button" type="submit" value="Verwijderen" style="height: 40px";>
 		</form>
 	</div>
 
@@ -30,7 +30,7 @@
 		<table>
 
 			<tr>
-				<th class="checkbox"><input class="checkbox" type="checkbox"></th>
+				<th class="checkbox"><input onchange="checkAll(this)" name="chk[]" validate id="check" class="checkbox" type="checkbox"></th>
 				<th>Voornaam</th>
 				<th class="klein">Tussenvoegsel</th>
 				<th>Achternaam</th>
@@ -39,7 +39,7 @@
 				<th class="icon"></th>
 			</tr>
 			<tr>
-				<td class="checkbox"><input class="checkbox" type="checkbox"></td>
+				<td class="checkbox"><input id="check" class="checkbox" type="checkbox"></td>
 				<td>Rik</td>
 				<td class="klein"></td>
 				<td>Bosman</td>
@@ -48,7 +48,7 @@
 				<td class="icon"><button class="weizigbutton"><img src="/Users/egbert-janterpstra/Downloads/icon.ico"></button</td>
 			</tr>
 			<tr>
-				<td class="checkbox"><input class="checkbox" type="checkbox"></td>
+				<td class="checkbox"><input id="check" class="checkbox" type="checkbox"></td>
 				<td>Johua</td>
 				<td class="klein"></td>
 				<td>Goudsblom</td>
@@ -57,7 +57,7 @@
 				<td class="icon"><button class="weizigbutton"><img src="/Users/egbert-janterpstra/Downloads/icon.ico"></button</td>
 			</tr>
 			<tr>
-				<td class="checkbox"><input class="checkbox" type="checkbox"></td>
+				<td class="checkbox"><input id="check" class="checkbox" type="checkbox"></td>
 				<td>Ka Chung</td>
 				<td class="klein"></td>
 				<td>Li</td>
@@ -66,7 +66,7 @@
 				<td class="icon"><button class="weizigbutton"><img src="/Users/egbert-janterpstra/Downloads/icon.ico"></button</td>
 			</tr>
 			<tr>
-				<td class="checkbox"><input class="checkbox" type="checkbox"></td>
+				<td class="checkbox"><input id="check" class="checkbox" type="checkbox"></td>
 				<td>Darwin</td>
 				<td class="klein">de</td>
 				<td>Wilde</td>
@@ -75,7 +75,7 @@
 				<td class="icon"><button class="weizigbutton"><img src="/Users/egbert-janterpstra/Downloads/icon.ico"></button</td>
 			</tr>
 			<tr>
-				<td class="checkbox"><input class="checkbox" type="checkbox"></td>
+				<td class="checkbox"><input id="check" class="checkbox" type="checkbox"></td>
 				<td>Egbert-Jan</td>
 				<td class="klein"></td>
 				<td>Terpstra</td>
@@ -92,4 +92,52 @@
 
 
 </body>
+
+<script type="text/javascript">
+
+	function checkAll(ele)
+	{
+		var checkboxes = document.getElementsByTagName('input');
+		if (ele.checked) 
+		{
+			for (var i = 0; i < checkboxes.length; i++)
+			{
+				if (checkboxes[i].type == 'checkbox')
+				{
+					checkboxes[i].checked = true;
+				}
+			}
+		}
+
+		else
+		{
+			for (var i = 0; i < checkboxes.length; i++)
+			{
+
+				if (checkboxes[i].type == 'checkbox')
+				{
+					checkboxes[i].checked = false;
+				}
+			}
+		}
+	}
+
+function verwijder()
+{
+
+	if(document.getElementById('check').checked)
+	{
+		alert("Weet u zeker dat u dit wilt verwijderen?");
+
+	}
+	else
+	{
+		alert("Selecteer iets");
+
+	}
+}
+
+
+
+	 </script>
 </html>
