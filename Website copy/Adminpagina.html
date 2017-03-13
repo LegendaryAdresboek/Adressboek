@@ -21,7 +21,7 @@
             <input class="button" type="submit" value="Zoeken" style="height: 40px">
 						<input class="button" type="submit" value="Toevoegen" style="height: 40px">
 						<input class="button" type="submit" value="Wijzigen" style="height: 40px">
-						<input onclick="verwijder()"  class="button" type="submit" value="Verwijderen" style="height: 40px">
+						<input onclick="verwijder()"  class="button" type="submit" value="Verwijderen" style="height: 40px";>
 		</form>
 	</div>
 
@@ -98,32 +98,33 @@
 	function checkAll(ele)
 	{
 		var checkboxes = document.getElementsByTagName('input');
-		if (ele.checked) {
-				for (var i = 0; i < checkboxes.length; i++)
+		if (ele.checked) 
+		{
+			for (var i = 0; i < checkboxes.length; i++)
+			{
+				if (checkboxes[i].type == 'checkbox')
 				{
-						if (checkboxes[i].type == 'checkbox')
-						{
-								checkboxes[i].checked = true;
-						}
+					checkboxes[i].checked = true;
 				}
+			}
 		}
 
 		else
 		{
-				for (var i = 0; i < checkboxes.length; i++)
-				{
+			for (var i = 0; i < checkboxes.length; i++)
+			{
 
-						if (checkboxes[i].type == 'checkbox')
-						{
-								checkboxes[i].checked = false;
-						}
+				if (checkboxes[i].type == 'checkbox')
+				{
+					checkboxes[i].checked = false;
 				}
+			}
 		}
-}
+	}
 
 function verwijder()
 {
-	
+
 	if(document.getElementById('check').checked)
 	{
 		alert("Weet u zeker dat u dit wilt verwijderen?");
