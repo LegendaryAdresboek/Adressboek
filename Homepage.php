@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<title>Homepage</title>
 		<link rel="stylesheet" type="text/css" href="Homepage.css">
+
 	</head>
 
 <?php
@@ -31,11 +32,16 @@
             <input class="button" type="submit" value="Zoeken" style="height: 40px">
 		</form>
 		<button id="loguit">uitloggen</button>
+		<button id="toevoegen">toevoegen</button>
 		<script type="text/javascript">
-    document.getElementById("loguit").onclick = function() {
-        location.href = "http://adressboek.000webhostapp.com/uitlog.php/";
-    };
-</script>
+    	document.getElementById("loguit").onclick = function() {
+        	location.href = "http://adressboek.000webhostapp.com/uitlog.php/";
+    	};
+			document.getElementById("toevoegen").onclick = function() {
+        	location.href = "http://adressboek.000webhostapp.com/addContact.php/";
+    	};
+		</script>
+
 
 
 
