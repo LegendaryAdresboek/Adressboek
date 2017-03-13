@@ -11,14 +11,14 @@ if (!$connection) {
 //gebruikers invoeren
 	if (!empty($_POST)) {
 
-	$query = "INSERT INTO gebruikers (Voornaam, Tussenvoegsel, Achternaam, Adres, Postcode, Plaats, Telefoonnummer)
+	$query = "INSERT INTO Gebruikers (Voornaam, Tussenvoegsel, Achternaam, Adres, Postcode, Plaats, Telefoonnummer)
     VALUES ('{$_POST['Voornaam']}', '{$_POST['Tussenvoegsel']}', '{$_POST['Achternaam']}', '{$_POST['Adres']}', '{$_POST['Postcode']}', '{$_POST['Plaats']}', '{$_POST['Telefoonnummer']}')";
 
 
 	$resultaat = mysqli_query($connection, $query);
 
 	if (!$resultaat) {
-	die ("Het is niet gelukt: ".mysqli_error($resultaat));
+		die ("Het is niet gelukt: ".mysqli_error($resultaat));
 	} else {
 		echo "U heeft een gebruiker toegevoegd";
 	}
@@ -35,21 +35,17 @@ if (!$connection) {
 <head>
 <meta charset="utf-8">
 <title>Database invoer</title>
-<style type="text/css">
-body
-{
-    /*background-image: url("achtergrond2.png");*/
-    background-color: cornflowerblue;
-    background-image: url("City.jpg");
-}
-</style>
+<base href="/">
+<link rel="stylesheet" type="text/css" href="Homepage.css">
 </head>
 
 <body>
 <h1>Nieuw gebruiker invoeren </h1><br><br>
+<div id="loginvak">
 <form action="addGebruiker.php" method="post" >
 
-Voornaam: <br>
+
+Voornaam:<br>
 <input type="text" name="Voornaam" required>
 <br>
 Tussenvoegsel*: <br>
@@ -73,5 +69,6 @@ Telefoonnummer: <br>
 
 <input type="submit" value="Verzenden">
 </form>
+<div/>
 </body>
 </html>
