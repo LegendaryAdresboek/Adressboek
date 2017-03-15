@@ -57,7 +57,8 @@
 		exit;
 	}elseif ($login == true && $IsAdmin['beheerder'] == 1) {
 		$_SESSION["loggedin"] = true;
-		header("Location:http://adressboek.000webhostapp.com/Adminpagina.html");
+		$_SESSION["IsAdmin"] = true;
+		header("Location:http://adressboek.000webhostapp.com/adminpage.php");
 		exit;
 	}
 	else {
