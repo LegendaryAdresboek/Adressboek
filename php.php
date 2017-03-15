@@ -34,6 +34,9 @@
 	    {
 
 	        $query = "SELECT gebruikersnaam FROM gebruikers WHERE gebruikersnaam = '$userName' AND wachtwoord = '$userPass'";
+					$query2 = "SELECT beheerder FROM gebruikers WHERE gebruikersnaam = '$userName' AND wachtwoord = '$userPass'";
+					$admin = mysqli_query($conn, $query2);
+					$IsAdmin = mysqli_fetch_array($admin);
 	        $result = mysqli_query($conn, $query);
 	        $row = mysqli_fetch_assoc($result);
 
@@ -47,10 +50,14 @@
 	?>
 
 	<?php
-	if ($login == true) {
+	if ($login == true && $IsAdmin['beheerder'] == 0) {
 		$_SESSION["loggedin"] = true;
 		// stuur door naar Homepage
 		header("Location:http://adressboek.000webhostapp.com/Homepage.php");
+		exit;
+	}elseif ($login == true && $IsAdmin['beheerder'] == 1) {
+		$_SESSION["loggedin"] = true;
+		header("Location:http://adressboek.000webhostapp.com/Adminpagina.html");
 		exit;
 	}
 	else {
