@@ -7,7 +7,6 @@
 	  header("Location:http://adressboek.000webhostapp.com/");
     exit;
 	}
-
  ?>
 
 <?php
@@ -15,32 +14,21 @@
 //now grabs passwords from external file so no one can see.
 $lines = file('configinlog.txt', FILE_IGNORE_NEW_LINES);
 $connection = mysqli_connect("localhost", $lines[0], $lines[1], $lines[2]);
-
 //doet ie het
 if (!$connection) {
 	die("Bronze 5 never lucky: ".mysqli_connect_errno()."<br>".mysqli_connect_error());
 }
 //gebruikers invoeren
 	if (!empty($_POST)) {
-
 	$query = "INSERT INTO gebruikers (gebruiker_ID, voornaam, prefix, achternaam, gebruikersnaam, wachtwoord, beheerder)
     VALUES (null, '{$_POST['voornaam']}', '{$_POST['prefix']}', '{$_POST['achternaam']}', '{$_POST['gebruikersnaam']}', '{$_POST['wachtwoord']}', '{$_POST['beheerder']}')";
-
-
 	$resultaat = mysqli_query($connection, $query);
-
-
-
 	if (!$resultaat) {
 		die ("Het is niet gelukt: ".mysqli_error($resultaat));
 	} else {
 		echo "U heeft een gebruiker toegevoegd";
 	}
 }
-
-
-
-
 ?>
 
 <!doctype html>
@@ -56,13 +44,11 @@ img{
   width: 20px;
   height: 20px;
 }
-
 #loginvak{
   height: 400px;
   width: 400px;
   float: left;
 }
-
 #tabel
 {
   float: left;
@@ -128,10 +114,8 @@ Is beheerder?: <br>
   				<th class="icon"></th>
   			</tr>
   <?php
-
   $query3 = "SELECT * FROM gebruikers";
   $result = mysqli_query($connection, $query3);
-
   if(!$result)
   {
     echo"error";
