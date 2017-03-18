@@ -2,80 +2,103 @@ body
 {
     /*background-image: url("achtergrond2.png");*/
     /*background-color: cornflowerblue;*/
-    background-image: url("tema.jpg");
+    /*background-image: url("tema.jpg");*/
+    background-color: lightgrey;
+    font-family: sans-serif;
+
 }
 
 #container
 {
-    width: 500px;
-    height: 700px;
+    width: 100%;
+    height: auto;
 
     margin: auto;
 }
 
-h1
-{
-    text-align: center;
-    font-family: Walkway Expand;
-    color: white;
-}
-#loginvak
-{
-    width: 340px;
-    height: 300px;
-    /*background-color: royalblue;*/
-    background-color: rgb(88, 83, 107, 1);
-    margin: auto;
-
-    padding-left: 60px;
-    padding-top: 100px;
-
-    font-family: Arial, Helvetica, sans-serif;
-    /*opacity: 0.7;*/
-    border: 2px solid white;
+/*Header stuff*/
+#header{
+  height: 50px;
+  width: 100%;
+ background-color: black;
 }
 
-form
-{
-    color: white;
-    font-weight: bold;
-    background-color: rgb(88, 83, 107, 1);
+#header img.logoplaatje{
+  height: 40px;
+  margin-top: 5px;
+  margin-left: 30px;
 
 }
 
-form.boven
-{
-    margin-bottom: 50px;
+#header ul{
+  color: white;
+  list-style-type: none;
+  float: right;
 }
 
-input.button
-{
-    float: right;
-    margin-right: 30px;
-    margin-top: 50px;
-    width: 150px;
-    border: none;
-    border-radius: 20px;
+#header li{
+  float: left;
+  margin-right: 30px;
+
 }
 
-input.textvak
-{
-    width: 200px;
-    height: 20px;
-    border-radius: 20px;
+#header a{
+  color: white;
+  text-decoration: none;
 }
 
-label
-{
-    font-weight: normal;
+.upArrow{
+  height: 0;
+  width: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgb(24, 152, 218);
+  right: 45px;
+  display: none;
 }
 
-p{
-    margin: -10px;
-	padding-top:40px;
+.loginForm{
+  position: absolute;
+  height: auto;
+  width: 300px;
+  background-color: rgb(24, 152, 218);
+  top:72px;
+  right: 8px;
+  display: none;
+  border-radius: 5px;
 }
 
-input.checkbox
-{
-    margin-top: 20px;
+.loginForm>form{
+  width: 250px;
+  margin: 0 auto;
+  color: White;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+#header input[type="text"], #header input[type="password"]{
+  width: 250px;
+  height: 30px;
+  border: 0px;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+/*Content stuff*/
+#content{
+  height: auto;
+  width: 100%;
+}
+
+#content img.logo{
+  margin-top: 15px;
+  width: 150px;
+  margin-left: calc(50% - 75px);
+}
+
+#content img.icon{
+  position: absolute;
+  left: calc(20% - 64px);
+  top: 150px;
 }

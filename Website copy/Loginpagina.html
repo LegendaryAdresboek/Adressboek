@@ -4,30 +4,73 @@
 	<head>
 		<meta charset="utf-8">
 		<title>loginpagina</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="loginpagina.css">
 	</head>
 
 
 <body>
 
+<div id="container">
+	<div id="header">
+		<img src="logoboven.png" class="logoplaatje"/>
+		<ul>
+			<li>About</li>
+			<li>Sign up</li>
+			<li><a href="#" id="Login">Sign in</a></li>
+		</ul>
+		<div class="upArrow"></div>
+		<div class="loginForm">
+			<form>
+					<label>Username: </label>
+				<div>
+					<input type="text" placeholder="Username" required/>
+				</div>
+					<label>Password: </label>
+				<div>
+					<input type="password" placeholder="Password" required/>
+				</div>
+				<div>
+					<input type="submit" value="Log in" required/>
+				</div>
 
-<div id="container"><h1>Het adressboek</h1>
-
-	<div id="loginvak">
-
-
-		<form class="boven">
-			<p>Gebruikersnaam:</p><br> <input class="textvak" type="text" name="gebruikersnaam"><br>
-			<p>Wachtwoord:</p><br> <input class="textvak" type="password" name="password"><br>
-
-			<label><input class="checkbox" type="checkbox" name="gegevensonthouden">Gegevens onthouden</label>
-
-			<input class="button" type="submit" value="Inloggen" style="height: 40px">
-		</form>
-
+			</form>
+		</div>
 	</div>
+
+	<div id="content">
+		<img class="logo" src="logoonder.png" />
+		<img class="icon" src="images\Privacy.png"/>
+
+		</div>
+	</div>
+
+
+
 </div>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	var form = $(".loginForm");
+	var arrow = $(".upArrow");
+	var status = false;
+
+	$("#Login").click(function(event){
+		event.preventDefault();
+		if(status == false){
+			form.fadeIn();
+			arrow.fadeIn();
+			status = true;
+		}else {
+			form.fadeOut();
+			arrow.fadeOut();
+			status = false;
+		}
+	});
+
+});
+
+</script>
 
 </body>
 </html>
