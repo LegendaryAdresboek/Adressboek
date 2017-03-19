@@ -76,6 +76,8 @@ body
 
 #header label{
   color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #header input[type="text"], #header input[type="password"]{
@@ -109,6 +111,8 @@ body
 
 }
 
+
+/*searchMenu stuff*/
 #searchMenu{
   position: fixed;
   top: 58px;

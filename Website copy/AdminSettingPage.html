@@ -3,9 +3,9 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>HomePage</title>
+		<title>Admin Pagina</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="homepage.css">
+		<link rel="stylesheet" type="text/css" href="AdminSettingPage.css">
 	</head>
 
 
@@ -15,8 +15,8 @@
 	<div id="header">
 		<img src="logoboven.png" class="logoplaatje"/>
 		<ul>
-			<li>About</li>
-			<li>Sign up</li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Administratief</a></li>
 			<li><a href="#" id="Login">Username</a></li>
 		</ul>
 		<div class="upArrow"></div>
@@ -49,15 +49,7 @@
 				<div>
 					<input type="text" />
 				</div>
-				<label>Acternaam:</label>
-				<div>
-					<input type="text" />
-				</div>
-				<label>Telefoon Nummer:</label>
-				<div>
-					<input type="text" />
-				</div>
-				<label>Adres:</label>
+				<label>Achternaam:</label>
 				<div>
 					<input type="text" />
 				</div>
@@ -70,44 +62,28 @@
 				<th>Voornaam</th>
 				<th>Tussenvoegsel</th>
 				<th>Achternaam</th>
-				<th>Telefoon Nummer</th>
-				<th>Adress</th>
+				<th>Gebruikersnaam</th>
+				<th>Wachtwoord</th>
+				<th>Is beheerder?</th>
 			</tr>
 			<tr>
-				<td>Rik</td>
-				<td></td>
-				<td>Bosman</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-			<tr>
-				<td>Joshua</td>
-				<td></td>
-				<td>Goudsblom</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-			<tr>
-				<td>Ka Chung</td>
-				<td></td>
-				<td>Li</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
+				<td>Admin</td>
+				<td>The</td>
+				<td>Allmighty</td>
+				<td>Admin</td>
+				<td>-------</td>
+				<td>1</td>
 			</tr>
 			<tr>
 				<td>Darwin</td>
-				<td>de</td>
+				<td>De</td>
 				<td>Wilde</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
+				<td>Narwhal</td>
+				<td>-------</td>
+				<td>0</td>
 			</tr>
-			<tr>
-				<td>Egbert-Jan</td>
-				<td></td>
-				<td>Terpstra</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
+
+
 		</table>
 
 
@@ -117,7 +93,6 @@
 
 </div>
 
-<!--DO NOT TOUCH THIS UNLESS UR ME-->
 <script type="text/javascript">
 $(document).ready(function(){
 	var form = $(".loginForm");
