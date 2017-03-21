@@ -37,7 +37,7 @@
         <hr />
 			</div>
 			<div>
-				<label><a href="#">Settings</a></label>
+				<label><a href="UserSettings.php">Settings</a></label>
 			</div>
 			<div>
 				<label><a href="uitlog.php">Log off</a></label>

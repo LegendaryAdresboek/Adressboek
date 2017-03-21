@@ -39,7 +39,7 @@
 				<hr />
 			</div>
 			<div>
-				<label class="foldMenu"><a href="#">Settings</a></label>
+				<label class="foldMenu"><a href="UserSettings.php">Settings</a></label>
 			</div>
 			<div>
 				<label class="foldMenu"><a href="uitlog.php">Log off</a></label>
