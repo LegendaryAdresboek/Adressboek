@@ -13,7 +13,7 @@
 
 <div id="container">
 	<div id="header">
-		<img src="logoboven.png" class="logoplaatje"/>
+		<img src="Images/logoboven.png" class="logoplaatje"/>
 		<ul>
 			<li>About</li>
 			<li>Sign up</li>
@@ -21,14 +21,14 @@
 		</ul>
 		<div class="upArrow"></div>
 		<div class="loginForm">
-			<form>
+			<form method="post" action="php.php">
 					<label>Username: </label>
 				<div>
-					<input type="text" placeholder="Username" required/>
+					<input type="text" placeholder="Username"  name="username" required/>
 				</div>
 					<label>Password: </label>
 				<div>
-					<input type="password" placeholder="Password" required/>
+					<input type="password" placeholder="Password" name="password" required/>
 				</div>
 				<div>
 					<input type="submit" value="Log in" required/>
@@ -39,8 +39,8 @@
 	</div>
 
 	<div id="content">
-		<img class="logo" src="logoonder.png" />
-		<img class="icon" src="images\Privacy.png"/>
+		<img class="logo" src="Images/logoonder.png" />
+		<img class="icon" src="Images/Privacy.png"/>
 		<p>
 			We store your contacts safe and secure!
 		</p>

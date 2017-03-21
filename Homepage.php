@@ -1,21 +1,22 @@
-<!doctype html>
-<?php
-include 'php.php';
-	function getLogin($conn){
-	if (isset($_POST[""]))
-	}
 
+<?php
+ session_start();
+	if (!isset($_SESSION["login"])) {
+		header("Location:http://adressboek.000webhostapp.com");
+		exit;
+	}
+  $user = $_SESSION["usrname"];
  ?>
 
-
-
-
+<!doctype html>
 <html>
 	<head>
+    <base href="/">
 		<meta charset="utf-8">
 		<title>HomePage</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="homepage.css">
+
+    <link rel="stylesheet" type="text/css" href="Homepage.css">
 	</head>
 
 
@@ -23,22 +24,23 @@ include 'php.php';
 
 <div id="container">
 	<div id="header">
-		<img src="logoboven.png" class="logoplaatje"/>
+		<img src="Images/logoboven.png" class="logoplaatje"/>
 		<ul>
 			<li>About</li>
 			<li>Sign up</li>
-			<li><a href="#" id="Login">Username</a></li>
+			<li><a href="#" id="Login"><?php print($user); ?></a></li>
 		</ul>
 		<div class="upArrow"></div>
 		<div class="loginForm">
 			<div>
-				<label>Hello, Username!</label>
+				<label>Hello, <?php print($user); ?>!</label>
+        <hr />
 			</div>
 			<div>
 				<label><a href="#">Settings</a></label>
 			</div>
 			<div>
-				<button>Log off</button>
+				<label><a href="uitlog.php">Log off</a></label>
 			</div>
 
 	</div>
@@ -48,7 +50,7 @@ include 'php.php';
 
 		<!-- Search menu -->
 			<nav id="searchMenu">
-				<a class="toggleBtn"><img class="buttonImg" src="images\arrow-right.png"/></a>
+				<a class="toggleBtn"><img class="buttonImg" src="Images/arrow-right.png"/></a>
 
 				<h1>Zoeken:</h1>
 				<label>Voornaam:</label>
@@ -145,10 +147,10 @@ $(document).ready(function(){
 	navToggleBtn.click(function(event){
 		event.preventDefault();
 		if(searchStatus == false){
-			$(".buttonImg").attr('src', "images/arrow-left.png");
+			$(".buttonImg").attr('src', "Images/arrow-left.png");
 			searchStatus = true;
 		}else {
-			$(".buttonImg").attr('src', "images/arrow-right.png");
+			$(".buttonImg").attr('src', "Images/arrow-right.png");
 			searchStatus = false;
 		}
 
