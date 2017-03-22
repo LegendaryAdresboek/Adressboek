@@ -1,9 +1,34 @@
 <?php
-	if (isset($_POST["newpas"])) {
-		if ($_POST["newpas"] == $_POST["newpasrep"]) {
-			
-		}else if ($_POST["newpas"] != $_POST["newpasrep"]) {
+session_start();
+if (!isset($_SESSION["login"]) && $_SESSION["isAdmin"] == 0) {
+	header("Location:http://adressboek.000webhostapp.com");
+	exit;
+}
 
+$lines = file('configinlog.txt', FILE_IGNORE_NEW_LINES);
+$conn = mysqli_connect("localhost", $lines[0], $lines[1], $lines[2]);
+if (!$conn) {
+	die("Connection failed: " . mysqli_connect_errno());
+};
+
+
+
+	$user = $_SESSION["usrname"];
+
+
+	if (isset($_POST["newpas"])) {
+		$newpas = $_POST["newpas"];
+		if ($_POST["newpas"] == $_POST["newpasrep"]) {
+			$input = $conn ->prepare("UPDATE gebruikers SET wachtwoord = ? WHERE gebruikersnaam = ? ");
+			$input->bind_param("ss", $newPassword, $currentUser);
+
+			$newPassword = $newpas;
+			$currentUser = $user;
+			$input->execute();
+			header("Location: uitlog.php");
+
+		}else if ($_POST["newpas"] != $_POST["newpasrep"]) {
+			echo '<script>alert("passwords do not match");</script>';
 		}
 	}
  ?>
@@ -16,7 +41,7 @@
 		<meta charset="utf-8">
 		<title>Admin Pagina</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="AdminSettingPage.css">
+		<link rel="stylesheet" type="text/css" href="UserSettingPage.css">
 	</head>
 
 
@@ -24,22 +49,23 @@
 
 <div id="container">
 	<div id="header">
-		<img src="logoboven.png" class="logoplaatje"/>
+		<img src="Images/logoboven.png" class="logoplaatje"/>
 		<ul>
 			<li><a href="#">About</a></li>
 			<li><a href="#">Administratief</a></li>
-			<li><a href="#" id="Login">Username</a></li>
+			<li><a href="#" id="Login"><?php print($user); ?></a></li>
 		</ul>
 		<div class="upArrow"></div>
 		<div class="loginForm">
 			<div>
-				<label>Hello, Username!</label>
+				<label>Hello, <?php print($user); ?>!</label>
+				<hr />
 			</div>
 			<div>
-				<label><a href="#">Settings</a></label>
+				<label><a href="#">back</a></label>
 			</div>
 			<div>
-				<button>Log off</button>
+				<label><a href="uitlog.php">Log Off</a></label>
 			</div>
 
 	</div>
@@ -47,29 +73,10 @@
 
 	<div id="content">
 
-		<!-- Search menu -->
-			<nav id="searchMenu">
-				<a class="toggleBtn"><img class="buttonImg" src="images\arrow-right.png"/></a>
-
-				<h1>Zoeken:</h1>
-				<label>Voornaam:</label>
-				<div>
-					<input type="text" />
-				</div>
-				<label>Tussenvoegel:</label>
-				<div>
-					<input type="text" />
-				</div>
-				<label>Achternaam:</label>
-				<div>
-					<input type="text" />
-				</div>
-
-			</nav>
-
-			<form method="post" action="php.php">
+			<form method="post" action="UserSettings.php">
 				Change password:<input type="password" name="newpas" /><br />
-				Repeat password:<input type="password" name="newpasrep"/>
+				Repeat password:<input type="password" name="newpasrep"/><br />
+				you will be logged out if you change your password.
 				<input type="submit" />
 
 			</form>
@@ -87,27 +94,6 @@ $(document).ready(function(){
 	var form = $(".loginForm");
 	var arrow = $(".upArrow");
 	var status = false;
-	var searchStatus = false;
-
-	var navToggleBtn = $(".toggleBtn");
-
-	navToggleBtn.click(function(event){
-		$("#searchMenu").toggleClass("activeNav");
-		event.preventDefault();
-	});
-
-	navToggleBtn.click(function(event){
-		event.preventDefault();
-		if(searchStatus == false){
-			$(".buttonImg").attr('src', "images/arrow-left.png");
-			searchStatus = true;
-		}else {
-			$(".buttonImg").attr('src', "images/arrow-right.png");
-			searchStatus = false;
-		}
-
-
-	});
 
 
 	$("#Login").click(function(event){
