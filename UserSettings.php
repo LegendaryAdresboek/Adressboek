@@ -73,12 +73,25 @@ if (!$conn) {
 
 	<div id="content">
 
-			<form method="post" action="UserSettings.php">
-				Change password:<input type="password" name="newpas" /><br />
-				Repeat password:<input type="password" name="newpasrep"/><br />
-				you will be logged out if you change your password.
-				<input type="submit" />
 
+			<form method="post" action="UserSettings.php">
+				<table>
+					<tr>
+						<th colspan="2">Change user password:</th>
+					</tr>
+					<tr>
+						<td>Change password:</td>
+						<td><input type="password" name="newpas" /></td>
+					</tr>
+					<tr>
+						<td>Repeat password:</td>
+						<td><input type="password" name="newpasrep" /></td>
+					</tr>
+					<tr>
+						<td><input type="submit" /></td>
+						<td>If you change your password you will be logged out.</td>
+					</tr>
+				</table>
 			</form>
 
 
