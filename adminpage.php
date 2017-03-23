@@ -29,7 +29,7 @@
 		<img src="Images/logoboven.png" class="logoplaatje"/>
 		<ul>
 			<li><a href="#">About</a></li>
-			<li><a href="#">Administratief</a></li>
+			<li><a href="AdminSettingsPage.php">Administratief</a></li>
 			<li><a href="#" id="Login"><?php print($user); ?></a></li>
 		</ul>
 		<div class="upArrow"></div>

@@ -111,6 +111,13 @@ body
 
 }
 
+#content .wijzigButton{
+  height: 50px;
+  width: 50px;
+}
+
+#content .potlood
+
 
 /*searchMenu stuff*/
 #searchMenu{
