@@ -5,7 +5,7 @@ if (!isset($_SESSION["login"]) && $_SESSION["isAdmin"] == 0) {
 	exit;
 }
 
-$lines = file('configinlog.txt', FILE_IGNORE_NEW_LINES);
+$lines = file('../configinlog.txt', FILE_IGNORE_NEW_LINES);
 $conn = mysqli_connect("localhost", $lines[0], $lines[1], $lines[2]);
 if (!$conn) {
 	die("Connection failed: " . mysqli_connect_errno());

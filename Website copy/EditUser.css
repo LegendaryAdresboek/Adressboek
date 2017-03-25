@@ -102,7 +102,7 @@ body
   position: absolute;
   width: 500px;
   height: auto;
-  left: calc(50% - 275px);
+  left: 100px;
   border: solid black 2px;
   margin-top: 10px;
 
@@ -114,9 +114,10 @@ body
 
 }
 
+#content input[type="textbox"]{ background-color: lightgrey; border: none;}
 .knop{ border: solid black 1px; width: 70px;}
-.deleteknopje{ position: absolute; top: 300px; right: 140px;}
-.updateknopje{ position: absolute; top: 280px; right: 140px;}
+.updateknopje{ position: absolute; top: 150px; left: 1000px;}
+.info{ position: absolute; top: 130px; left: 100px;}
 
 #searchMenu{
   position: fixed;
