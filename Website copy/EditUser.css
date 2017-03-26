@@ -100,9 +100,9 @@ body
 #content table{
   border-collapse: collapse;
   position: absolute;
-  width: 550px;
+  width: 500px;
   height: auto;
-  left: calc(50% - 275px);
+  left: 10px;
   border: solid black 2px;
   margin-top: 10px;
 
@@ -113,6 +113,11 @@ body
   border: solid 1px black;
 
 }
+
+#content input[type="textbox"]{ background-color: lightgrey; border: none;}
+.knop{ border: solid black 1px; width: 70px;}
+.updateknopje{ position: absolute; top: 150px; left: 885px;}
+#content label.info{ position: absolute; top: 130px; left: 0px; color: black;}
 
 #searchMenu{
   position: fixed;

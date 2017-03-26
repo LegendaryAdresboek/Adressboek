@@ -1,24 +1,11 @@
-<?php
- session_start();
-	if (!isset($_SESSION["login"]) && $_SESSION["isAdmin"] == 0) {
-		header("Location:http://adressboek.000webhostapp.com");
-		exit;
-	}
-	if ($_SESSION["isAdmin"] == 0) {
-		header("location:javascript://history.go(-1)");
-	}
-  $user = $_SESSION["usrname"];
- ?>
-
 <!doctype html>
 
 <html>
 	<head>
-		<base href="/">
 		<meta charset="utf-8">
 		<title>Admin Pagina</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="Adminpagina.css">
+		<link rel="stylesheet" type="text/css" href="AdminSettingPage.css">
 	</head>
 
 
@@ -26,23 +13,22 @@
 
 <div id="container">
 	<div id="header">
-		<img src="Images/logoboven.png" class="logoplaatje"/>
+		<img src="logoboven.png" class="logoplaatje"/>
 		<ul>
 			<li><a href="#">About</a></li>
-			<li><a href="AdminSettingsPage.php">Administratief</a></li>
-			<li><a href="#" id="Login"><?php print($user); ?></a></li>
+			<li><a href="#">Administratief</a></li>
+			<li><a href="#" id="Login">Username</a></li>
 		</ul>
 		<div class="upArrow"></div>
 		<div class="loginForm">
 			<div>
-				<label class="foldMenu">Hello, <?php print($user); ?>!</label>
-				<hr />
+				<label>Hello, Username!</label>
 			</div>
 			<div>
-				<label class="foldMenu"><a href="UserSettings.php">Settings</a></label>
+				<label><a href="#">Settings</a></label>
 			</div>
 			<div>
-				<label class="foldMenu"><a href="uitlog.php">Log off</a></label>
+				<button>Log off</button>
 			</div>
 
 	</div>
@@ -52,7 +38,7 @@
 
 		<!-- Search menu -->
 			<nav id="searchMenu">
-				<a class="toggleBtn"><img class="buttonImg" src="Images/arrow-right.png"/></a>
+				<a class="toggleBtn"><img class="buttonImg" src="images\arrow-right.png"/></a>
 
 				<h1>Zoeken:</h1>
 				<label>Voornaam:</label>
@@ -76,44 +62,28 @@
 				<th>Voornaam</th>
 				<th>Tussenvoegsel</th>
 				<th>Achternaam</th>
-				<th>Telefoon Nummer</th>
-				<th>Adress</th>
+				<th>Gebruikersnaam</th>
+				<th>Wachtwoord</th>
+				<th>Is beheerder?</th>
 			</tr>
 			<tr>
-				<td>Rik</td>
-				<td></td>
-				<td>Bosman</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-			<tr>
-				<td>Joshua</td>
-				<td></td>
-				<td>Goudsblom</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-			<tr>
-				<td>Ka Chung</td>
-				<td></td>
-				<td>Li</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
+				<td>Admin</td>
+				<td>The</td>
+				<td>Allmighty</td>
+				<td>Admin</td>
+				<td>-------</td>
+				<td>1</td>
 			</tr>
 			<tr>
 				<td>Darwin</td>
-				<td>de</td>
+				<td>De</td>
 				<td>Wilde</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
+				<td>Narwhal</td>
+				<td>-------</td>
+				<td>0</td>
 			</tr>
-			<tr>
-				<td>Egbert-Jan</td>
-				<td></td>
-				<td>Terpstra</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
+
+
 		</table>
 
 
@@ -140,10 +110,10 @@ $(document).ready(function(){
 	navToggleBtn.click(function(event){
 		event.preventDefault();
 		if(searchStatus == false){
-			$(".buttonImg").attr('src', "Images/arrow-left.png");
+			$(".buttonImg").attr('src', "images/arrow-left.png");
 			searchStatus = true;
 		}else {
-			$(".buttonImg").attr('src', "Images/arrow-right.png");
+			$(".buttonImg").attr('src', "images/arrow-right.png");
 			searchStatus = false;
 		}
 

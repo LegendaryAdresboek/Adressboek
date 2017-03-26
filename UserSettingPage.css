@@ -39,14 +39,12 @@ body
 #header li{
   float: left;
   margin-right: 30px;
-  display: block;
 
 }
 
 #header a{
   color: white;
   text-decoration: none;
-
 }
 
 #header a:hover{
@@ -76,12 +74,13 @@ body
 }
 
 #header label{
-  display: block;
   color: white;
+  display: block;
   margin-top: 5px;
   margin-left: 10px;
   margin-bottom: 10px;
 }
+
 
 #header input[type="text"], #header input[type="password"]{
   width: 250px;
@@ -97,21 +96,29 @@ body
   width: 100%;
 }
 
+#content{
+
+}
+
 #content table{
-  border-collapse: collapse;
   position: absolute;
   width: 550px;
   height: auto;
   left: calc(50% - 275px);
-  border: solid black 2px;
+  border: none;
   margin-top: 10px;
+  border: solid 2px black;
 
 }
 
-#content td, #content th{
+#content td{
   padding: 5px;
-  border: solid 1px black;
 
+}
+
+#content th{
+  padding: 5px;
+  text-align: left;
 }
 
 #searchMenu{
