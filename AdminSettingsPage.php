@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 if (!isset($_SESSION["login"]) && $_SESSION["isAdmin"] == 0) {
 	header("Location:http://adressboek.000webhostapp.com");
 	exit;
@@ -16,11 +17,44 @@ if ($_SESSION["isAdmin"] == 0) {
 	};
 	$user = $_SESSION["usrname"];
 
-	$query = "SELECT * FROM gebruikers";
+	// $query = "SELECT * FROM gebruikers";
 
-	$resultaat = mysqli_query($conn, $query) or die ("Something went wrong");
+	// $resultaat = mysqli_query($conn, $query) or die ("Something went wrong");
 
-	$tellen = mysqli_num_rows($resultaat);
+	// $tellen = mysqli_num_rows($resultaat);
+
+?>
+
+<?php
+
+
+if(isset($_POST['search']))
+{
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query = "SELECT * FROM `gebruikers` WHERE CONCAT(`gebruiker_ID`, `voornaam`, `prefix`, `achternaam`, `email`, `gebruikersnaam`, `wachtwoord`, `beheerder`) LIKE '%".$valueToSearch."%' ";
+
+    $search_result = filterTable($query, $conn);
+
+}
+  else
+  {
+    $query = "SELECT * FROM `gebruikers`";
+    $search_result = filterTable($query, $conn);
+
+  }
+
+if(!isset($search_result)){
+  die("Error");
+}
+// function to connect and execute the query
+function filterTable($query, $conn)
+{
+
+    $filter_Result = mysqli_query($conn, $query);
+    return $filter_Result;
+}
 
 ?>
 
@@ -43,7 +77,7 @@ if ($_SESSION["isAdmin"] == 0) {
 		<img src="Images/logoboven.png" class="logoplaatje"/>
 		<ul>
 			<li>About</li>
-			<li><a href="adminpage.php">Back</a></li>
+			<li><a href="adminpage.php">Terug</a></li>
 			<li><a href="#" id="Login"><?php print($user); ?></a></li>
 		</ul>
 		<div class="upArrow"></div>
@@ -66,19 +100,27 @@ if ($_SESSION["isAdmin"] == 0) {
 
 		<!-- Search menu -->
 			<nav id="searchMenu">
-				<a class="toggleBtn"><img class="buttonImg" src="Images\arrow-right.png"/></a>
+					<a class="toggleBtn"><img class="buttonImg" src="Images\arrow-right.png"/></a>
 
+				<div>
 				<h1>Nieuwe gebruiker:</h1>
 				<label>Voer in:</label>
-				<div>
+
 					<form action="AddUser.php" method="post">
 						<input type="text" name="voornaam" placeholder="Voornaam" />
 						<input type="text" name="prefix" placeholder="Tussenvoegsel" />
 						<input type="text" name="achternaam" placeholder="Achternaam" />
+						<input type="text" name="email" placeholder="Email" />
 						<input type="text" name="gebruikersnaam" placeholder="Gebruikersnaam" />
 						<input type="text" name="wachtwoord" placeholder="Wachtwoord" />
 						<input type="text" name="beheerder" placeholder="Beheerder 1=ja 0=nee" />
-						<input type="submit" name="newUser" value="newUsers" />
+						<input type="submit" name="newUser" value="newUsers" class="button newUserBtn"/>
+					</form>
+
+					<h1>Zoeken:</h1>
+					<form action="AdminSettingsPage.php" method="post">
+		          <input type="text" name="valueToSearch" placeholder="Zoeken (laat leeg voor alles)" />
+		          <input type="submit" name="search" value="Filter" class="button"/>
 					</form>
 				</div>
 
@@ -88,25 +130,27 @@ if ($_SESSION["isAdmin"] == 0) {
 			<form action="AdminSettingsPage.php" method="post">
 			<table border="1">
 			<tr>
-				<th><input type="checkbox" id="select_all"/> Selecct All</th>
+				<th><input onClick="toggle(this)" type="checkbox" id="checkBox"/> Select All</th>
 			    <!-- <th>Gebruikers_ID</th> -->
 				<th>Voornaam</th>
 			    <th>Tussenvoegsel</th>
 			    <th>Achternaam</th>
+					<th>E-mail</th>
 			    <th>Gebruikersnaam</th>
 			    <th>Beheerder?</th>
 
 			</tr>
 				<?php
-				while($rijen=mysqli_fetch_array($resultaat)) {
+				while($rijen=mysqli_fetch_array($search_result)) {
 				?>
 
 				<tr>
-			    <td><input type="checkbox" name="check[]" value="<?php echo $rijen['gebruiker_ID'];?>"></td>
+			    <td><input id="checkBox" type="checkbox" name="check[]" value="<?php echo $rijen['gebruiker_ID'];?>"></td>
 					<!-- <td><?php echo $rijen['gebruiker_ID'] ?></td> -->
 					<td><?php echo $rijen['voornaam'] ?></td>
 					<td><?php echo $rijen['prefix'] ?></td>
 					<td><?php echo $rijen['achternaam'] ?></td>
+					<td><?php echo $rijen['email'] ?></td>
 					<td><?php echo $rijen['gebruikersnaam'] ?></td>
 					<td><?php echo $rijen['beheerder'] ?></td>
 
@@ -117,13 +161,14 @@ if ($_SESSION["isAdmin"] == 0) {
 
 			    </table>
 			    <br>
-			    <input type="submit" value="verwijderen" name="verwijderen" class="knop deleteknopje">
+			    <input type="submit" value="verwijderen" name="verwijderen" class="knop deleteknopje" onclick="return confirm('Weet u zeker dat u dit wil verwijderen?')">
 					<input type="submit" value="update" name="update"  class="knop updateknopje"/>
 			    </form>
 			    </div>
-			    <?php
+
+				<?php
 				// hiermee kijken of het gecheckt is. Zo wel, dan verwijder command uitvoeren
-				if (!empty($_POST)) {
+				if (!empty($_POST['verwijderen']) || !empty($_POST['update'])) {
 				if(isset($_POST['verwijderen'])) {
 					$check = $_POST['check'];
 
@@ -134,7 +179,7 @@ if ($_SESSION["isAdmin"] == 0) {
 					$resultaat = mysqli_query($conn, $query);
 					}
 				}elseif (isset($_POST['update'])) {
-						$check = $_POST['check'];
+					$check = $_POST['check'];
 					$update = $check[0];
 					$_SESSION['UID'] = $update;
 					Header("Location: EditUser.php");
@@ -148,7 +193,7 @@ if ($_SESSION["isAdmin"] == 0) {
 				}
 				}
 
-				?>
+?>
 
 			</table>
 
@@ -202,6 +247,15 @@ $(document).ready(function(){
 	});
 
 });
+
+function toggle(source) {
+  checkboxes = document.getElementsByName('check[]');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+};
+
+
 
 
 </script>

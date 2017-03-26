@@ -88,7 +88,7 @@ body
   height: 30px;
   border: 0px;
   outline: none;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 /*Content stuff*/
@@ -105,7 +105,7 @@ body
   left: calc(50% - 275px);
   border: solid black 2px;
   margin-top: 10px;
-
+  font-size: 12px;
 }
 
 #content td, #content th{
@@ -115,8 +115,8 @@ body
 }
 
 .knop{ border: solid black 1px; width: 70px;}
-.deleteknopje{ position: absolute; top: 300px; right: 140px;}
-.updateknopje{ position: absolute; top: 280px; right: 140px;}
+.deleteknopje{ position: relative; float: right; top: 150px;}
+.updateknopje{ position: absolute; right: 7px; top: 140px;}
 
 #searchMenu{
   position: fixed;
@@ -153,12 +153,20 @@ body
 }
 
 #searchMenu label, #searchMenu input[type="text"]{
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-left: 30px;
 }
 
 #searchMenu h1{
   color: white;
   margin-left: 30px;
+  margin-bottom: 10px;
 }
+
+#searchMenu .button{
+  background-color: lightgrey;
+  border: black 1px solid;
+}
+
+#searchMenu .newUserBtn{margin-left: 29px;}

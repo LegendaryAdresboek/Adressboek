@@ -80,6 +80,7 @@ if (!$conn) {
 				<th>Voornaam</th>
 				<th>Tussenvoegsel</th>
 				<th>Achternaam</th>
+        <th>email</th>
 				<th>Gebruikersnaam</th>
 				<th>Wachtwoord</th>
         <th>Beheerder</th>
@@ -94,6 +95,7 @@ if (!$conn) {
         <td><input type="textbox" value="<?php echo $rijen['voornaam'] ?>" name="voornaam"/></td>
         <td><input type="textbox" value="<?php echo $rijen['prefix'] ?>" name="prefix"/></td>
         <td><input type="textbox" value="<?php echo $rijen['achternaam'] ?>" name="achternaam" /></td>
+        <td><input type="textbox" value="<?php echo $rijen['email'] ?>" name="email" /></td>
         <td><input type="textbox" value="<?php echo $rijen['gebruikersnaam'] ?>" name="gebruikersnaam"/></td>
         <td><input type="textbox" value="<?php echo $rijen['wachtwoord'] ?>" name="wachtwoord"/></td>
         <td><input type="textbox" value="<?php echo $rijen['beheerder'] ?>" name="beheerder"/></td>
@@ -113,11 +115,12 @@ if (!$conn) {
         $vnaam = $_POST['voornaam'];
         $prefix = $_POST['prefix'];
         $anaam = $_POST['achternaam'];
+        $email = $_POST['email'];
         $gnaam = $_POST['gebruikersnaam'];
         $wwoord = $_POST['wachtwoord'];
         $beheer = $_POST['beheerder'];
         $gebruikerID = $_SESSION['UID'];
-        $query = "UPDATE gebruikers SET voornaam='$vnaam',prefix='$prefix',achternaam='$anaam',gebruikersnaam='$gnaam',wachtwoord='$wwoord',beheerder='$beheer' WHERE gebruiker_ID= '$gebruikerID'";
+        $query = "UPDATE gebruikers SET voornaam='$vnaam',prefix='$prefix',achternaam='$anaam',email='$email',gebruikersnaam='$gnaam',wachtwoord='$wwoord',beheerder='$beheer' WHERE gebruiker_ID= '$gebruikerID'";
 
         $resultaat = mysqli_query($conn, $query);
         if ($resultaat) {

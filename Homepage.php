@@ -1,13 +1,4 @@
 
-<?php
- session_start();
-	if (!isset($_SESSION["login"])) {
-		header("Location:http://adressboek.000webhostapp.com");
-		exit;
-	}
-  $user = $_SESSION["usrname"];
- ?>
-
 <!doctype html>
 <html>
 	<head>
@@ -21,6 +12,53 @@
 
 
 <body>
+  <?php
+   session_start();
+  	if (!isset($_SESSION["login"])) {
+  		header("Location:http://adressboek.000webhostapp.com");
+  		exit;
+  	}
+    $user = $_SESSION["usrname"];
+   ?>
+<!-- PHP voor zoeken -->
+<?php
+
+
+if(isset($_POST['search']))
+{
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query = "SELECT * FROM `Gebruikers` WHERE CONCAT(`ID`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Adres`, `Postcode`, `Plaats`, `Telefoonnummer`) LIKE '%".$valueToSearch."%' ";
+
+    $search_result = filterTable($query);
+
+}
+  else
+  {
+    $query = "SELECT * FROM `Gebruikers`";
+    $search_result = filterTable($query);
+
+  }
+
+if(!isset($search_result)){
+  die("Error");
+}
+// function to connect and execute the query
+function filterTable($query)
+{
+    $lines = file('../configgebruikers.txt', FILE_IGNORE_NEW_LINES);
+  	$connect = mysqli_connect("localhost", $lines[0], $lines[1], $lines[2]);
+
+    $filter_Result = mysqli_query($connect, $query);
+    return $filter_Result;
+}
+
+?>
+
+
+
+
 
 <div id="container">
 	<div id="header">
@@ -53,74 +91,46 @@
 				<a class="toggleBtn"><img class="buttonImg" src="Images/arrow-right.png"/></a>
 
 				<h1>Zoeken:</h1>
-				<label>Voornaam:</label>
-				<div>
-					<input type="text" />
-				</div>
-				<label>Tussenvoegel:</label>
-				<div>
-					<input type="text" />
-				</div>
-				<label>Acternaam:</label>
-				<div>
-					<input type="text" />
-				</div>
-				<label>Telefoon Nummer:</label>
-				<div>
-					<input type="text" />
-				</div>
-				<label>Adres:</label>
-				<div>
-					<input type="text" />
-				</div>
-
+				<form action="Homepage.php" method="post">
+	          <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
+	          <input type="submit" name="search" value="Filter"><br><br>
+				</form>
 			</nav>
 
-		<table>
 
-			<tr>
-				<th>Voornaam</th>
-				<th>Tussenvoegsel</th>
-				<th>Achternaam</th>
-				<th>Telefoon Nummer</th>
-				<th>Adress</th>
-			</tr>
-			<tr>
-				<td>Rik</td>
-				<td></td>
-				<td>Bosman</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-			<tr>
-				<td>Joshua</td>
-				<td></td>
-				<td>Goudsblom</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-			<tr>
-				<td>Ka Chung</td>
-				<td></td>
-				<td>Li</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-			<tr>
-				<td>Darwin</td>
-				<td>de</td>
-				<td>Wilde</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-			<tr>
-				<td>Egbert-Jan</td>
-				<td></td>
-				<td>Terpstra</td>
-				<td>06123456789</td>
-				<td>AB 8338</td>
-			</tr>
-		</table>
+
+      <table>
+          <tr>
+              <th>ID</th>
+              <th>Voornaam</th>
+              <th>Tussenvoegsel</th>
+              <th>Achternaam</th>
+              <th>Adres</th>
+              <th>Postcode</th>
+              <th>Plaats</th>
+              <th>Telefoonnummer</th>
+          </tr>
+
+
+          <?php
+            while($row = mysqli_fetch_assoc($search_result))
+            {
+          ?>
+          <tr>
+              <td><?php echo $row['ID'];?></td>
+              <td><?php echo $row['Voornaam'];?></td>
+              <td><?php echo $row['Tussenvoegsel'];?></td>
+              <td><?php echo $row['Achternaam'];?></td>
+              <td><?php echo $row['Adres'];?></td>
+              <td><?php echo $row['Postcode'];?></td>
+              <td><?php echo $row['Plaats'];?></td>
+              <td><?php echo $row['Telefoonnummer'];?></td>
+
+          </tr>
+          <?php
+          }
+          ?>
+      </table>
 
 
 	</div>
@@ -130,6 +140,7 @@
 </div>
 
 <!--DO NOT TOUCH THIS UNLESS UR ME-->
+<!--I AM ME-->
 <script type="text/javascript">
 $(document).ready(function(){
 	var form = $(".loginForm");

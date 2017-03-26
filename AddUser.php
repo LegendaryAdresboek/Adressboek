@@ -23,8 +23,8 @@ if (!$connection) {
 //gebruikers invoeren
 	if (!empty($_POST)) {
 
-	$query = "INSERT INTO gebruikers (gebruiker_ID, voornaam, prefix, achternaam, gebruikersnaam, wachtwoord, beheerder)
-    VALUES (null, '{$_POST['voornaam']}', '{$_POST['tussenvoegsel']}', '{$_POST['achternaam']}', '{$_POST['gebruikersnaam']}', '{$_POST['wachtwoord']}', '{$_POST['beheerder']}')";
+	$query = "INSERT INTO gebruikers (gebruiker_ID, voornaam, prefix, achternaam, email, gebruikersnaam, wachtwoord, beheerder)
+    VALUES (null, '{$_POST['voornaam']}', '{$_POST['tussenvoegsel']}', '{$_POST['achternaam']}', '{$_POST['email']}','{$_POST['gebruikersnaam']}', '{$_POST['wachtwoord']}', '{$_POST['beheerder']}')";
 
 
 	$resultaat = mysqli_query($connection, $query);
