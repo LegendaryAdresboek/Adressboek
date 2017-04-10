@@ -6,7 +6,8 @@
 		<meta charset="utf-8">
 		<title>HomePage</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="jquery.tablesorter.js"></script>
+		<script src="jquery.tablesorter.js">
+		</script>
 
     <link rel="stylesheet" type="text/css" href="Homepage.css">
 	</head>
@@ -103,14 +104,15 @@ function filterTable($query)
       <table id="myTable">
 				<thead>
           <tr>
-              <th>ID</th>
-              <th>Voornaam</th>
-              <th>Tussenvoegsel</th>
-              <th>Achternaam</th>
-              <th>Adres</th>
-              <th>Postcode</th>
-              <th>Plaats</th>
-              <th>Telefoonnummer</th>
+
+							<th>ID</th>
+							<th>Voornaam</th>
+							<th>Tussenvoegsel</th>
+							<th>Achternaam</th>
+							<th>Adres</th>
+							<th>Postcode</th>
+							<th>Plaats</th>
+							<th>Telefoonnumme</th>
           </tr>
 				</thead>
 				<tbody>
