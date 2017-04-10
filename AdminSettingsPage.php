@@ -66,7 +66,9 @@ function filterTable($query, $conn)
 		<meta charset="utf-8">
 		<title>Admin settings</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="jquery.tablesorter.js"></script>
 		<link rel="stylesheet" type="text/css" href="AdminSettingPage.css">
+
 	</head>
 
 
@@ -128,7 +130,8 @@ function filterTable($query, $conn)
 			</nav>
 
 			<form action="AdminSettingsPage.php" method="post">
-			<table border="1">
+			<table id="myTable" border="1">
+				<thead>
 			<tr>
 				<th><input onClick="toggle(this)" type="checkbox" id="checkBox"/> Select All</th>
 			    <!-- <th>Gebruikers_ID</th> -->
@@ -140,6 +143,8 @@ function filterTable($query, $conn)
 			    <th>Beheerder?</th>
 
 			</tr>
+		</thead>
+		<tbody>
 				<?php
 				while($rijen=mysqli_fetch_array($search_result)) {
 				?>
@@ -158,8 +163,9 @@ function filterTable($query, $conn)
 				}
 				?>
 				</tr>
+			</tbody>
 
-			    </table>
+	</table>
 			    <br>
 			    <input type="submit" value="verwijderen" name="verwijderen" class="knop deleteknopje" onclick="return confirm('Weet u zeker dat u dit wil verwijderen?')">
 					<input type="submit" value="update" name="update"  class="knop updateknopje"/>
@@ -207,6 +213,7 @@ function filterTable($query, $conn)
 <!--DO NOT TOUCH THIS UNLESS UR ME-->
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#myTable").tablesorter();
 	var form = $(".loginForm");
 	var arrow = $(".upArrow");
 	var status = false;

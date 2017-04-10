@@ -1,0 +1,178 @@
+body
+{
+    /*background-image: url("achtergrond2.png");*/
+    /*background-color: cornflowerblue;*/
+    /*background-image: url("tema.jpg");*/
+    background-color: lightgrey;
+    font-family: sans-serif;
+
+}
+
+#container
+{
+    width: 100%;
+    height: auto;
+
+    margin: auto;
+}
+
+/*Header stuff*/
+#header{
+  height: 50px;
+  width: 100%;
+ background-color: black;
+}
+
+#header img.logoplaatje{
+  height: 40px;
+  margin-top: 5px;
+  margin-left: 30px;
+
+}
+
+#header ul{
+  color: white;
+  list-style-type: none;
+  float: right;
+}
+
+#header li{
+  float: left;
+  margin-right: 30px;
+  display: block;
+
+}
+
+#header a{
+  color: white;
+  text-decoration: none;
+
+}
+
+#header a:hover{
+  color: lightblue;
+}
+
+.upArrow{
+  height: 0;
+  width: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgb(24, 152, 218);
+  right: 45px;
+  display: none;
+}
+
+.loginForm{
+  position: absolute;
+  height: auto;
+  width: 300px;
+  background-color: rgb(24, 152, 218);
+  top:72px;
+  right: 8px;
+  display: none;
+  border-radius: 5px;
+}
+
+#header label{
+  display: block;
+  color: white;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+#header input[type="text"], #header input[type="password"]{
+  width: 250px;
+  height: 30px;
+  border: 0px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+/*Content stuff*/
+#content{
+  height: auto;
+  width: 100%;
+}
+
+#content table{
+  border-collapse: collapse;
+  position: absolute;
+  width: 500px;
+  height: auto;
+  left: calc(50% - 275px);
+  border: solid black 2px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+#content td, #content th{
+  padding: 5px;
+  border: solid 1px black;
+
+}
+
+.knop{ border: solid black 1px; width: 70px;}
+.deleteknopje{ position: relative; float: right; top: 150px;}
+.updateknopje{ position: absolute; right: 7px; top: 140px;}
+
+#searchMenu{
+  position: fixed;
+  top: 58px;
+  bottom: 0;
+  width: 350px;
+  background-color: rgb(24, 152, 218);
+  transform: translate3d(-360px, 0, 0);
+  transition: transform 0.4s ease;
+}
+
+#searchMenu.activeNav{
+  transform: translate3d(0 ,0 ,0);
+  transition: transform 0.4s ease;
+}
+
+#searchMenu ul{
+  list-style-type: none;
+  margin-top: 80px;
+  display: block;
+}
+
+#searchMenu .toggleBtn{
+    display: block;
+    position: absolute;
+    left: 360px;
+    width: 40px;
+    height: 40px;
+    background-color: grey;
+}
+#searchMenu img.buttonImg{
+  height: 40px;
+  width: 40px;
+}
+
+#searchMenu label, #searchMenu input[type="text"]{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+
+#searchMenu h1{
+  color: white;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+#searchMenu .button{
+  background-color: lightgrey;
+  border: black 1px solid;
+}
+
+#searchMenu .newUserBtn{margin-left: 29px;}
+
+
+#myTable th.headerSortDown
+{
+  background-image: url("Images/desc.gif"); 
+}

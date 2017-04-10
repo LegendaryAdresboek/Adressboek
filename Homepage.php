@@ -6,6 +6,8 @@
 		<meta charset="utf-8">
 		<title>HomePage</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="jquery.tablesorter.js">
+		</script>
 
     <link rel="stylesheet" type="text/css" href="Homepage.css">
 	</head>
@@ -99,18 +101,21 @@ function filterTable($query)
 
 
 
-      <table>
+      <table id="myTable">
+				<thead>
           <tr>
-              <th>ID</th>
-              <th>Voornaam</th>
-              <th>Tussenvoegsel</th>
-              <th>Achternaam</th>
-              <th>Adres</th>
-              <th>Postcode</th>
-              <th>Plaats</th>
-              <th>Telefoonnummer</th>
-          </tr>
 
+							<th>ID</th>
+							<th>Voornaam</th>
+							<th>Tussenvoegsel</th>
+							<th>Achternaam</th>
+							<th>Adres</th>
+							<th>Postcode</th>
+							<th>Plaats</th>
+							<th>Telefoonnumme</th>
+          </tr>
+				</thead>
+				<tbody>
 
           <?php
             while($row = mysqli_fetch_assoc($search_result))
@@ -130,6 +135,8 @@ function filterTable($query)
           <?php
           }
           ?>
+
+				</tbody>
       </table>
 
 
@@ -143,6 +150,7 @@ function filterTable($query)
 <!--I AM ME-->
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#myTable").tablesorter();
 	var form = $(".loginForm");
 	var arrow = $(".upArrow");
 	var status = false;

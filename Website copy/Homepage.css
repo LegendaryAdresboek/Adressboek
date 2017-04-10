@@ -110,7 +110,7 @@ body
 #content td, #content th{
   padding: 5px;
   border: solid 1px black;
-
+  padding-right: 20px;
 }
 
 #searchMenu{
@@ -157,3 +157,21 @@ body
   color: white;
   margin-left: 30px;
 }
+
+th.headerSortDown {
+    background-image: url("Images/asc.gif");
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+th.headerSortUp {
+    background-image: url("Images/desc.gif");
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+/*th.header {
+    background-image: url("Images/bg.gif");
+    background-repeat: no-repeat;
+    background-position: center right;
+}*/
