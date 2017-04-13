@@ -149,7 +149,7 @@ body
 
 #searchMenu label, #searchMenu input[type="text"]{
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   margin-left: 30px;
 }
 
