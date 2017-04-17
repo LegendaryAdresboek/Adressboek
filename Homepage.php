@@ -25,6 +25,14 @@
 <!-- PHP voor zoeken -->
 <?php
 
+if (isset($_POST['delThis'])) {
+	$delID = $_POST['delThis'];
+	$lines = file('../configgebruikers.txt', FILE_IGNORE_NEW_LINES);
+	$connect = mysqli_connect("localhost", $lines[0], $lines[1], $lines[2]);
+	$delQuery = "DELETE FROM Gebruikers WHERE ID = '$delID'";
+	$resultaat = mysqli_query($connect, $delQuery);
+	unset($_POST['delThis']);
+}
 
 if(isset($_POST['search']))
 {
@@ -112,6 +120,7 @@ function filterTable($query)
 
 
 
+
       <table id="myTable">
 				<thead>
           <tr>
@@ -124,6 +133,8 @@ function filterTable($query)
 							<th>Postcode</th>
 							<th>Plaats</th>
 							<th>Telefoonnumme</th>
+							<th></th>
+
           </tr>
 				</thead>
 				<tbody>
@@ -147,14 +158,18 @@ function filterTable($query)
               <td><?php echo $row['Postcode'];?></td>
               <td><?php echo $row['Plaats'];?></td>
               <td><?php echo $row['Telefoonnummer'];?></td>
-
+							<td><form method="post" action="editContact.php" ><button type="submit" name="buttonid" value="<?php echo $row['ID'] ?>">wijzig</button></form>
+								<form method="post" action="Homepage.php" ><button onclick="return confirm('Weet u zeker dat u dit wil verwijderen?')" type="submit" name="delThis" value="<?php echo $row['ID'] ?>">Verwijder</button></form>
+							</td>
           </tr>
           <?php
           }
+					// $_SESSION['nummerid'] = $_POST['buttonid'];
           ?>
 
 				</tbody>
       </table>
+
 
 
 	</div>
