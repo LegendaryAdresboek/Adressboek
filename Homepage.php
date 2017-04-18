@@ -158,8 +158,8 @@ function filterTable($query)
               <td><?php echo $row['Postcode'];?></td>
               <td><?php echo $row['Plaats'];?></td>
               <td><?php echo $row['Telefoonnummer'];?></td>
-							<td><form method="post" action="editContact.php" ><button type="submit" name="buttonid" value="<?php echo $row['ID'] ?>">wijzig</button></form>
-								<form method="post" action="Homepage.php" ><button onclick="return confirm('Weet u zeker dat u dit wil verwijderen?')" type="submit" name="delThis" value="<?php echo $row['ID'] ?>">Verwijder</button></form>
+							<td><form method="post" action="editContact.php" ><button type="submit" name="buttonid" value="<?php echo $row['ID'] ?>">Wijzigen</button></form>
+								<form method="post" action="Homepage.php" ><button onclick="return confirm('Weet u zeker dat u dit wil verwijderen?')" type="submit" name="delThis" value="<?php echo $row['ID'] ?>"><img src="trash-icon.png" height="30" width="30" /></button></form>
 							</td>
           </tr>
           <?php
