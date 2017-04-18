@@ -36,13 +36,16 @@ if (!$conn) {
 
 
 <body>
-
+<form action="editContact.php" method="post" enctype="multipart/form-data">
 <div id="container">
 	<div id="header">
 		<img src="Images/logoboven.png" class="logoplaatje"/>
-		<ul>
-      <li><a href="#">About</a></li>
-			<li><a href="AdminSettingsPage.php">Administratief</a></li>
+    <ul>
+      <li><input id="sendSound" type="submit" name="update" class="knop updateknopje"/></li>
+      <li><a href="AdminSettingsPage.php">Terug</a></li>
+    </ul>
+		<ul class="ulrechts">
+			<li>About</li>
 			<li><a href="#" id="Login"><?php print($user); ?></a></li>
 		</ul>
 		<div class="upArrow"></div>
@@ -55,7 +58,7 @@ if (!$conn) {
 				<label><a href="UserSettings.php">Settings</a></label>
 			</div>
 			<div>
-				<label><a href="uitlog.php">Log off</a></label>
+				<label><a href="uitlog.php">Log Out</a></label>
 			</div>
 
 	</div>
@@ -63,9 +66,9 @@ if (!$conn) {
 
 	<div id="content">
 
-    <form action="editContact.php" method="post" enctype="multipart/form-data">
 
-    		<table>
+
+    		<table class="admintable">
 
     			<tr>
             <th>Pasfoto</th>
@@ -103,9 +106,9 @@ if (!$conn) {
           }
           ?>
     		</table>
-        <label class="info">Klik op een veld om het te wijzigen</label>
+        <p class="infoadmin">Klik op een veld om het te wijzigen</p>
 
-        <input id="sendSound" type="submit" name="update" class="knop updateknopje"/>
+
         </form>
 
         <!-- PHP voor Updaten records database -->
