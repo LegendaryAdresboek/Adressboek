@@ -100,7 +100,7 @@ function filterTable($query)
 				<label><a href="UserSettings.php">Settings</a></label>
 			</div>
 			<div>
-				<label><a href="uitlog.php">Log off</a></label>
+				<label><a href="uitlog.php">Log Out</a></label>
 			</div>
 
 	</div>

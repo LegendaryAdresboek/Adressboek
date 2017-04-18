@@ -27,13 +27,20 @@ body
   height: 40px;
   margin-top: 5px;
   margin-left: 30px;
-
+  float: left;
 }
 
 #header ul{
   color: white;
   list-style-type: none;
+
+  width: 300px;
+  float: left;
+}
+#header ul.ulrechts
+{
   float: right;
+  width: auto;
 }
 
 #header li{
@@ -62,6 +69,7 @@ body
   border-bottom: 15px solid rgb(24, 152, 218);
   right: 45px;
   display: none;
+  margin-top: 49px;
 }
 
 .loginForm{
@@ -104,8 +112,18 @@ body
   height: auto;
   left: 10px;
   border: solid black 2px;
-  margin-top: 10px;
+  /*margin-top: 10px;*/
 
+}
+table.admintable
+{
+  border-collapse: collapse;
+  position: absolute;
+  width: 500px;
+  height: auto;
+  left: 10px;
+  border: solid black 2px;
+  margin-top: 70px;
 }
 
 #content td, #content th{
@@ -113,11 +131,31 @@ body
   border: solid 1px black;
 
 }
+p.infoadmin
+{
+  padding-top: 200px;
+}
 
 #content input[type="textbox"]{ background-color: lightgrey; border: none;}
 .knop{ border: solid black 1px; width: 70px;}
-.updateknopje{ position: absolute; top: 150px; left: 885px;}
-#content label.info{ position: absolute; top: 130px; left: 0px; color: black;}
+.updateknopje{
+background: black;
+color: white;
+font-size: 17px;
+margin: -5px;
+cursor: pointer;
+}
+#content label.info{
+  margin-top: 70px;
+  margin-left: 10px;
+  color: black;
+
+
+}
+p.info{
+  padding-top: 140px;
+  padding-left: 10px;
+}
 
 #searchMenu{
   position: fixed;
@@ -138,6 +176,7 @@ body
   list-style-type: none;
   margin-top: 80px;
   display: block;
+
 }
 
 #searchMenu .toggleBtn{
