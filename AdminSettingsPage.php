@@ -75,10 +75,14 @@ function filterTable($query, $conn)
 <body>
 
 <div id="container">
+	<form action="AdminSettingsPage.php" method="post">
 	<div id="header">
 		<img src="Images/logoboven.png" class="logoplaatje"/>
-		<ul>
-			<li>About</li>
+		<ul class="ullinks">
+			<li><input type="submit" value="Update" name="update"  class="knop updateknopje"/></li>
+			<li><input type="submit" value="Delete" name="verwijderen" class="knop deleteknopje" onclick="return confirm('Weet u zeker dat u dit wil verwijderen?')"></li>
+		</ul>
+		<ul class="ulrechts">
 			<li><a href="adminpage.php">Terug</a></li>
 			<li><a href="#" id="Login"><?php print($user); ?></a></li>
 		</ul>
@@ -115,7 +119,7 @@ function filterTable($query, $conn)
 						<input type="text" name="email" placeholder="Email" />
 						<input type="text" name="gebruikersnaam" placeholder="Gebruikersnaam" />
 						<input type="text" name="wachtwoord" placeholder="Wachtwoord" />
-						<input type="text" name="beheerder" placeholder="Beheerder 1=ja 0=nee" />
+						<input type="text" name="beheerder" placeholder="Beheerder ja of nee" />
 						<input type="submit" name="newUser" value="newUsers" class="button newUserBtn"/>
 					</form>
 
@@ -129,13 +133,13 @@ function filterTable($query, $conn)
 
 			</nav>
 
-			<form action="AdminSettingsPage.php" method="post">
-			<table id="myTable" border="1">
+
+			<table id="myTable" border="0">
 				<thead>
 			<tr>
-				<th><input onClick="toggle(this)" type="checkbox" id="checkBox"/> Select All</th>
+					<th data-sorter="false"><input onClick="toggle(this)" type="checkbox" id="checkBox"/> Select All</th>
 			    <!-- <th>Gebruikers_ID</th> -->
-				<th>Voornaam</th>
+					<th>Voornaam</th>
 			    <th>Tussenvoegsel</th>
 			    <th>Achternaam</th>
 					<th>E-mail</th>
@@ -157,7 +161,7 @@ function filterTable($query, $conn)
 					<td><?php echo $rijen['achternaam'] ?></td>
 					<td><?php echo $rijen['email'] ?></td>
 					<td><?php echo $rijen['gebruikersnaam'] ?></td>
-					<td><?php echo $rijen['beheerder'] ?></td>
+					<td><?php if($rijen['beheerder'] == "0"){echo "Nee";}else{ echo "Ja";}?></td>
 
 			    	<?php
 				}
@@ -167,8 +171,7 @@ function filterTable($query, $conn)
 
 	</table>
 			    <br>
-			    <input type="submit" value="verwijderen" name="verwijderen" class="knop deleteknopje" onclick="return confirm('Weet u zeker dat u dit wil verwijderen?')">
-					<input type="submit" value="update" name="update"  class="knop updateknopje"/>
+
 			    </form>
 			    </div>
 
@@ -213,7 +216,20 @@ function filterTable($query, $conn)
 <!--DO NOT TOUCH THIS UNLESS UR ME-->
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#myTable").tablesorter();
+	$("#myTable").tablesorter({
+        // pass the headers argument and assing a object
+        headers: {
+            // assign the secound column (we start counting zero)
+            0: {
+                // disable it by setting the property sorter to false
+                sorter: false
+            }
+            // assign the third column (we start counting zero)
+        }
+    });
+
+
+
 	var form = $(".loginForm");
 	var arrow = $(".upArrow");
 	var status = false;
@@ -261,6 +277,32 @@ function toggle(source) {
     checkboxes[i].checked = source.checked;
   }
 };
+// function checkAll(ele)
+//     {
+//         var checkboxes = document.getElementsByTagName('input');
+//         if (ele.checked)
+//         {
+//             for (var i = 0; i < checkboxes.length; i++)
+//             {
+//                 if (checkboxes[i].type == 'checkbox')
+//                 {
+//                     checkboxes[i].checked = true;
+//                 }
+//             }
+//         }
+//
+//         else
+//         {
+//             for (var i = 0; i < checkboxes.length; i++)
+//             {
+//
+//                 if (checkboxes[i].type == 'checkbox')
+//                 {
+//                     checkboxes[i].checked = false;
+//                 }
+//             }
+//         }
+//     }
 
 
 

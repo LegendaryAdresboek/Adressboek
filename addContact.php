@@ -31,8 +31,8 @@ if (!$connection) {
     $image = file_get_contents($image);
     $image = base64_encode($image);
 
-	$query = $connection->prepare("INSERT INTO `Gebruikers`(`ID`, `image`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Adres`, `Postcode`, `Plaats`, `Telefoonnummer`) VALUES (null,?,?,?,?,?,?,?,?)");
-  $query->bind_param("ssssssss", $img, $vn, $tvg, $an, $ad, $pc, $pl, $tl);
+	$query = $connection->prepare("INSERT INTO `Gebruikers`(`ID`, `image`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Adres`, `Postcode`, `Plaats`, `Telefoonnummer`, `opmerking`) VALUES (null,?,?,?,?,?,?,?,?,?)");
+  $query->bind_param("sssssssss", $img, $vn, $tvg, $an, $ad, $pc, $pl, $tl, $op);
 
   $img = $image;
   $vn = $_POST['voornaam'];
@@ -42,10 +42,11 @@ if (!$connection) {
   $pc = $_POST['postcode'];
   $pl = $_POST['plaats'];
   $tl = $_POST['telnr'];
+  $op = $_POST['opmerking'];
   $query->execute();
   //$result->$query->get_result();
 	// $resultaat = mysqli_query($connection, $query);
-  Header("Location: Homepage.php");
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
   exit;
 
 

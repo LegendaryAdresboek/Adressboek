@@ -42,9 +42,8 @@ if (!$conn) {
     <ul>
       <li><input id="sendSound" type="submit" name="update" class="knop updateknopje"/></li>
       <li><a href="Homepage.php">Terug</a></li>
-    </ul> 
+    </ul>
 		<ul class="ulrechts">
-			<li>About</li>
 			<li><a href="#" id="Login"><?php print($user); ?></a></li>
 		</ul>
 		<div class="upArrow"></div>
@@ -78,6 +77,7 @@ if (!$conn) {
 				<th>Postcode</th>
 				<th>Plaats</th>
         <th>Telefoonnummer</th>
+        <th>Opmerking</th>
 			</tr>
       <?php
       while($rijen=mysqli_fetch_array($resultaat)) {
@@ -100,6 +100,7 @@ if (!$conn) {
         <td><input type="textbox" value="<?php echo $rijen['Postcode'] ?>" name="postcode"/></td>
         <td><input type="textbox" value="<?php echo $rijen['Plaats'] ?>" name="plaats"/></td>
         <td><input type="textbox" value="<?php echo $rijen['Telefoonnummer'] ?>" name="telnummer"/></td>
+        <td><textarea rows="4" cols="50" maxlength="140" value="" name="opmerking"><?php echo $rijen['opmerking'] ?></textarea></td>
 
           <?php
       }
@@ -120,15 +121,16 @@ if (!$conn) {
         $postcode = $_POST['postcode'];
         $plaats = $_POST['plaats'];
         $telnummer = $_POST['telnummer'];
+        $opmerking = $_POST['opmerking'];
         $conID = $_SESSION['cid'];
       if(!file_exists($_FILES['foto']['tmp_name']) || !is_uploaded_file($_FILES['foto']['tmp_name'])){
-            $query = "UPDATE `Gebruikers` SET `Voornaam`='".$vnaam."',`Tussenvoegsel`='".$prefix."',`Achternaam`='".$anaam."',`Adres`='".$adres."',`Postcode`='".$postcode."',`Plaats`='".$plaats."',`Telefoonnummer`='".$telnummer."' WHERE `ID`='".$conID."'";
+            $query = "UPDATE `Gebruikers` SET `Voornaam`='".$vnaam."',`Tussenvoegsel`='".$prefix."',`Achternaam`='".$anaam."',`Adres`='".$adres."',`Postcode`='".$postcode."',`Plaats`='".$plaats."',`Telefoonnummer`='".$telnummer."',`opmerking`='".$opmerking."' WHERE `ID`='".$conID."'";
         }else {
           $image = addslashes($_FILES['foto']['tmp_name']);
           $name = addslashes($_FILES['foto']['name']);
           $image = file_get_contents($image);
           $image = base64_encode($image);
-          $query = "UPDATE `Gebruikers` SET `image`='".$image."',`Voornaam`='".$vnaam."',`Tussenvoegsel`='".$prefix."',`Achternaam`='".$anaam."',`Adres`='".$adres."',`Postcode`='".$postcode."',`Plaats`='".$plaats."',`Telefoonnummer`='".$telnummer."' WHERE `ID`='".$conID."'";
+          $query = "UPDATE `Gebruikers` SET `image`='".$image."',`Voornaam`='".$vnaam."',`Tussenvoegsel`='".$prefix."',`Achternaam`='".$anaam."',`Adres`='".$adres."',`Postcode`='".$postcode."',`Plaats`='".$plaats."',`Telefoonnummer`='".$telnummer."',`opmerking`='".$opmerking."' WHERE `ID`='".$conID."'";
         }
 
         $result = mysqli_query($conn, $query);

@@ -6,7 +6,11 @@
 		<meta charset="utf-8">
 		<title>HomePage</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="jquery.tablesorter.js">
+		<script src="jquery.tablesorter.js"></script>
+
+		<link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+		<script src="magnific-popup/jquery.magnific-popup.js"></script>
+
 		</script>
 
     <link rel="stylesheet" type="text/css" href="Homepage.css">
@@ -14,6 +18,17 @@
 
 
 <body>
+
+	<div id="test-popup" class="white-popup mfp-hide">
+	<img class="modal-image" src="Images/logoboven.png" />
+	<h3>Legendary AdresBook</h3>
+	<p>Version 1.1<br />
+		By: Darwin, Egbert-Jan, KaChung, Joshua and Rik. <br /><br />
+		Copyright &copy; 2017 Legendary Inc. <br />
+		All Rights Reserved.
+	</p>
+</div>
+
   <?php
    session_start();
   	if (!isset($_SESSION["login"])) {
@@ -39,7 +54,7 @@ if(isset($_POST['search']))
     $valueToSearch = $_POST['valueToSearch'];
     // search in all table columns
     // using concat mysql function
-    $query = "SELECT * FROM `Gebruikers` WHERE CONCAT(`ID`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Adres`, `Postcode`, `Plaats`, `Telefoonnummer`) LIKE '%".$valueToSearch."%' ";
+    $query = "SELECT * FROM `Gebruikers` WHERE CONCAT(`ID`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Adres`, `Postcode`, `Plaats`, `Telefoonnummer`, `opmerking`) LIKE '%".$valueToSearch."%' ";
 
     $search_result = filterTable($query);
 
@@ -72,10 +87,8 @@ function filterTable($query)
 
 <div id="container">
 	<div id="header">
-		<img src="Images/logoboven.png" class="logoplaatje"/>
+		<a href="#test-popup" class="open-popup-link"><img src="Images/logoboven.png" class="logoplaatje"/></a>
 		<ul>
-			<li>About</li>
-			<li>Sign up</li>
 			<li><a href="#" id="Login"><?php print($user); ?></a></li>
 		</ul>
 		<div class="upArrow"></div>
@@ -85,10 +98,10 @@ function filterTable($query)
         <hr />
 			</div>
 			<div>
-				<label><a href="UserSettings.php">Settings</a></label>
+				<label><a href="UserSettings.php">Change Password?</a></label>
 			</div>
 			<div>
-				<label><a href="uitlog.php">Log off</a></label>
+				<label><a href="uitlog.php">Log Out</a></label>
 			</div>
 
 	</div>
@@ -103,10 +116,12 @@ function filterTable($query)
 				<h1>Zoeken:</h1>
 				<form action="Homepage.php" method="post">
 	          <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
-	          <input type="submit" name="search" value="Filter"><br><br>
+	          <input type="submit" name="search" value="Filter" style="width: 250px; margin-left: 29px;"><br><br>
 				</form>
+				<br>
+				<h1>Toevoegen:</h1>
 				<form action="addContact.php" method="post" enctype="multipart/form-data">
-					<input type="file" name="foto"/>
+					<input type="file" name="foto" style="margin-left:29px;"/>
 					<input type="text" name="voornaam" placeholder="Voornaam"/>
 					<input type="text" name="tvg" placeholder="Tussenvoegsel"/>
 					<input type="text" name="achternaam" placeholder="Achternaam"/>
@@ -114,7 +129,8 @@ function filterTable($query)
 					<input type="text" name="postcode" placeholder="Postcode"/>
 					<input type="text" name="plaats" placeholder="Plaats"/>
 					<input type="text" name="telnr" placeholder="Telefoonnummer"/>
-					<input type="submit" name="AddContact" />
+					<input type="text" name="opmerking" placeholder="Opmerking"/>
+					<input type="submit" name="AddContact" style="width:250px; margin-left:29px;" />
 				</form>
 			</nav>
 
@@ -133,7 +149,8 @@ function filterTable($query)
 							<th>Postcode</th>
 							<th>Plaats</th>
 							<th>Telefoonnumme</th>
-							<th></th>
+							<th>Opmerking</th>
+							<th>Acties</th>
 
           </tr>
 				</thead>
@@ -158,7 +175,8 @@ function filterTable($query)
               <td><?php echo $row['Postcode'];?></td>
               <td><?php echo $row['Plaats'];?></td>
               <td><?php echo $row['Telefoonnummer'];?></td>
-							<td><form method="post" action="editContact.php" ><button type="submit" name="buttonid" value="<?php echo $row['ID'] ?>">Wijzigen</button></form>
+							<td><?php echo $row['opmerking'];?></td>
+							<td><form method="post" action="editContact.php" ><button type="submit" name="buttonid" value="<?php echo $row['ID'] ?>"><img src="icon.ico" height="30" width="30" /></button></form>
 								<form method="post" action="Homepage.php" ><button onclick="return confirm('Weet u zeker dat u dit wil verwijderen?')" type="submit" name="delThis" value="<?php echo $row['ID'] ?>"><img src="trash-icon.png" height="30" width="30" /></button></form>
 							</td>
           </tr>
@@ -222,6 +240,13 @@ $(document).ready(function(){
 		}
 	});
 
+});
+
+$('.open-popup-link').magnificPopup({
+  type:'inline',
+  midClick: true,
+	closeBtnInside:true,
+	alignTop:false
 });
 
 </script>
